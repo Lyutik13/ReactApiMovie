@@ -1,0 +1,42 @@
+[
+	{
+		"id": "0",
+		"imageUrl": "https://lh3.googleusercontent.com/d/1MLJoiRkg1kInWnru10RTda3hSbJkMMHn=s220?authuser=0",
+		"name": "Акула Classic",
+		"description": "Это та самая Акула из IKEA",
+		"sizes": [55, 100, 140],
+		"price": 1400,
+		"category": "Акулы",
+		"rating": 5
+	},
+	{
+		"id": "1",
+		"imageUrl": "https://lh3.googleusercontent.com/d/1NPio98pVLuP0tWuSlVj798trIij9UZ7P=s220?authuser=0",
+		"name": "Акула синяя",
+		"description": "Новая синяя расцветка",
+		"sizes": [55, 100, 140],
+		"price": 1400,
+		"category": "Акулы",
+		"rating": 1
+	},
+	{
+		"id": "2",
+		"imageUrl": "https://lh3.googleusercontent.com/d/11v600XfL6WcM91bg8dkxHZ5L5wodsytK=s220?authuser=0",
+		"name": "Акула серая",
+		"description": "Новая серая расцветка",
+		"sizes": [55, 100, 140],
+		"price": 1400,
+		"category": "Акулы",
+		"rating": 1
+	},
+	{
+		"id": "3",
+		"imageUrl": "https://lh3.googleusercontent.com/d/10WCkglNhLMCHom9CLs7lFc4IyjIz=s220?authuser=0",
+		"name": "Акула розовая",
+		"description": "Новая розовая расцветка",
+		"sizes": [55, 100, 140],
+		"price": 1400,
+		"category": "Акулы",
+		"rating": 2
+	}
+]
