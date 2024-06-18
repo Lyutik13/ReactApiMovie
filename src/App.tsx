@@ -12,8 +12,9 @@ function App() {
 	const [items, setItems] = React.useState([]);
 	const [isLoading, setIsLoading] = React.useState(true);
 
-  const [genres, setGenres] = React.useState("Все жанры");
-  const [ratingKp, setRatingKp] = React.useState("Все года");
+	const [genres, setGenres] = React.useState("Все жанры");
+	const [ratingKp, setRatingKp] = React.useState("Все");
+	const [sortYears, setSortYears] = React.useState("Все года");
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
@@ -25,9 +26,10 @@ function App() {
 			},
 		};
 		// const url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5";
-    const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
-    const ratingKpUrl = ratingKp === "Все года" ? "" : `&rating.kp=${ratingKp}`;
-		const url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5${genresUrl}${ratingKpUrl}`;
+		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
+		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
+		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
+		const url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
 
 		async function getUser() {
 			try {
@@ -37,19 +39,27 @@ function App() {
 				setIsLoading(false);
 			} catch (error) {
 				console.error(error);
-        setIsLoading(false);
+				setIsLoading(false);
 			}
 		}
 
 		getUser();
-	}, [genres, ratingKp]);
+	}, [genres, ratingKp, sortYears]);
 
-	console.log(items);
-	console.log(isLoading);
-	console.log(genres);
+	console.log(sortYears);
 
 	return (
-		<AppContext.Provider value={{ items, isLoading, genres, setGenres, ratingKp, setRatingKp }}>
+		<AppContext.Provider
+			value={{
+				items,
+				isLoading,
+				genres,
+				setGenres,
+				ratingKp,
+				setRatingKp,
+				sortYears,
+				setSortYears,
+			}}>
 			<div className="wrapper">
 				<Header />
 				<main className="main">

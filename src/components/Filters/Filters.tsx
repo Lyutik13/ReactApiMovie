@@ -21,22 +21,42 @@ const listGenres = [
 ];
 
 // Продумать ползунок вместо цыфр (чуть позже)
-const listRatingKp = ["Все года", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10"];
+const listRatingKp = ["Все", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10"];
+const listYears = [
+	"Все года",
+	"2024",
+	"1990-1995",
+	"1995-2000",
+	"2000-2005",
+	"2005-2010",
+	"2010-2015",
+	"2015-2020",
+	"2020-2024",
+];
 
 export const Filters: React.FC = () => {
-	const { genres, setGenres, ratingKp, setRatingKp } = React.useContext(AppContext);
+	const { genres, setGenres, ratingKp, setRatingKp, sortYears, setSortYears } =
+		React.useContext(AppContext);
 	const [openGenres, setOpenGenres] = React.useState<boolean>(false);
 	const [openRatingKp, setOpenRatingKp] = React.useState<boolean>(false);
+	const [openSortYears, setOpenSortYears] = React.useState<boolean>(false);
 
-	// 2 раза ражимается genres fix leter
+	// 2 раза нажимается genres fix leter
 	const onClickGenres = (obj) => {
 		setGenres(obj.name);
 		setOpenGenres(false);
 	};
 
+  // переделать на imput 
 	const onClickRatingKp = (obj) => {
 		setRatingKp(obj);
 		setOpenRatingKp(false);
+	};
+
+   // переделать на imput 
+	const onClickSortYears = (obj) => {
+		setSortYears(obj);
+		setOpenSortYears(false);
 	};
 
 	return (
@@ -72,6 +92,26 @@ export const Filters: React.FC = () => {
 							<ul>
 								{listRatingKp.map((obj) => (
 									<li onClick={() => onClickRatingKp(obj)} key={obj}>
+										{obj}
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				)}
+			</details>
+
+			<details open>
+				<summary className={styles.summary}>Год выпуска</summary>
+				<div onClick={() => setOpenSortYears(!openSortYears)} className={styles.body}>
+					{sortYears}
+				</div>
+				{openSortYears && (
+					<div className={styles.dropdown}>
+						<div className={styles.dropdownList}>
+							<ul>
+								{listYears.map((obj) => (
+									<li onClick={() => onClickSortYears(obj)} key={obj}>
 										{obj}
 									</li>
 								))}
