@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/logo.png";
 import styles from "./Header.module.scss";
@@ -7,12 +8,12 @@ export const Header: React.FC = () => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.header__top}>
-				<div className={styles.logo__wrapper}>
+				<Link to={"/"} className={styles.logo__wrapper}>
 					<div className={styles.logo}>
 						<img src={logoImg} alt="logo Shark" />
 					</div>
 					<h1>ReactApiMuvie</h1>
-				</div>
+				</Link>
 				<div className={styles.btn__wrapper}>
 					<div className={styles.search}>
 						<input placeholder="Фильмы, сериалы" type="text" />

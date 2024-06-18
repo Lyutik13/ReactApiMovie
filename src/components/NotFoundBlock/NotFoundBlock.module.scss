@@ -1,0 +1,14 @@
+@import '../../sass/variables';
+
+.error {
+	text-align: center;
+  padding: 100px 0;
+}
+
+.desc {
+	font-size: 24px;
+	span {
+		font-size: 80px;
+		color: $color1;
+	}
+}

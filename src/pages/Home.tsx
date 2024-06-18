@@ -3,6 +3,7 @@ import AppContext from "../context";
 
 import CartItem from "../components/CartItem/CartItem";
 import Filters from "../components/Filters/Filters";
+import NotFoundMuvie from "../components/NotFoundBlock/NotFoundMuvie";
 
 export const Home = () => {
 	const { items, isLoading } = React.useContext(AppContext);
@@ -16,9 +17,13 @@ export const Home = () => {
 						<Filters />
 					</aside>
 					<section className="cardsWrapper">
-						{items.map((item) => (
-							<CartItem key={item.id} {...item} />
-						))}
+						{!isLoading && items.length <= 0 ? (
+							<NotFoundMuvie />
+						) : isLoading ? (
+							"Loading muvies"
+						) : (
+							items.map((item) => <CartItem key={item.id} {...item} />)
+						)}
 					</section>
 				</div>
 			</section>

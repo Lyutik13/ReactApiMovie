@@ -1,10 +1,13 @@
 import React from "react";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 
 import AppContext from "./context";
 import Header from "./components/Header/Heder";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import OneCart from "./pages/OneCart";
 
 import "./sass/App.scss";
 
@@ -19,17 +22,18 @@ function App() {
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
 		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
-		const token = "GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z";
+    // ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
+		const token = "ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
 			},
 		};
-		// const url = "https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5";
+    
 		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
-		const url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=5${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
+		const url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=50${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
 
 		async function getUser() {
 			try {
@@ -46,8 +50,6 @@ function App() {
 		getUser();
 	}, [genres, ratingKp, sortYears]);
 
-	console.log(sortYears);
-
 	return (
 		<AppContext.Provider
 			value={{
@@ -63,7 +65,11 @@ function App() {
 			<div className="wrapper">
 				<Header />
 				<main className="main">
-					<Home />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/movie/:id" element={<OneCart />} />
+						<Route path="*" element={<NotFound />} />
+					</Routes>
 				</main>
 				<Footer />
 			</div>
