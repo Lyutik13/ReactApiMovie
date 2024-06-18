@@ -17,13 +17,7 @@ body {
 	max-width: 1400px;
 }
 
-.line {
-	border-bottom: 1px solid $color1;
-	margin: 0 -25px;
-}
-
 .main {
-	padding-top: 25px;
 	margin: 0 25px;
 }
 
@@ -53,7 +47,9 @@ h3 {
 }
 
 .filterWrapper {
-  min-width: 260px;
+  padding: 25px 0;
+  // max-width: 260px;
+  width: 260px;
 }
 
 .cardsWrapper {

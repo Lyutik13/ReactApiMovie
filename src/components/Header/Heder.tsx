@@ -17,11 +17,9 @@ export const Header: React.FC = () => {
 					<div className={styles.search}>
 						<input placeholder="Фильмы, сериалы" type="text" />
 					</div>
-          <div className="basket">
-					<button className="btn btn-basket">
-						Избранное
-					</button>
-				</div>
+					<div className="basket">
+						<button className="btn btn-basket">Избранное</button>
+					</div>
 				</div>
 			</div>
 		</header>

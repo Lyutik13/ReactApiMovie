@@ -1,8 +1,10 @@
 @import "../../sass/variables";
 
 .header {
-	padding-top: 25px;
+	padding: 25px 0;
+  border-bottom: 1px solid $color1
 }
+
 
 .header__top {
 	display: flex;
