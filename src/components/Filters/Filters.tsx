@@ -4,7 +4,11 @@ import AppContext from "../../context";
 
 import styles from "./Filters.module.scss";
 
-const listGenres = [
+type ListType = {
+	name: string;
+};
+
+const listGenres: ListType[] = [
 	{ name: "Все жанры" },
 	{ name: "Аниме" },
 	{ name: "Документальный" },
@@ -21,8 +25,19 @@ const listGenres = [
 ];
 
 // Продумать ползунок вместо цыфр (чуть позже)
-const listRatingKp = ["Все", "1-2", "2-3", "3-4", "4-5", "5-6", "6-7", "7-8", "8-9", "9-10"];
-const listYears = [
+const listRatingKp: string[] = [
+	"Все",
+	"1-2",
+	"2-3",
+	"3-4",
+	"4-5",
+	"5-6",
+	"6-7",
+	"7-8",
+	"8-9",
+	"9-10",
+];
+const listYears: string[] = [
 	"Все года",
 	"2024",
 	"1990-1995",
@@ -42,19 +57,19 @@ export const Filters: React.FC = () => {
 	const [openSortYears, setOpenSortYears] = React.useState<boolean>(false);
 
 	// 2 раза нажимается genres fix leter
-	const onClickGenres = (obj) => {
+	const onClickGenres = (obj: ListType) => {
 		setGenres(obj.name);
 		setOpenGenres(false);
 	};
 
-  // переделать на imput 
-	const onClickRatingKp = (obj) => {
+	// переделать на imput
+	const onClickRatingKp = (obj: string) => {
 		setRatingKp(obj);
 		setOpenRatingKp(false);
 	};
 
-   // переделать на imput 
-	const onClickSortYears = (obj) => {
+	// переделать на imput
+	const onClickSortYears = (obj: string) => {
 		setSortYears(obj);
 		setOpenSortYears(false);
 	};

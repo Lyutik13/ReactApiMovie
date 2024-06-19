@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import img from '../../assets/no_poster.png'
+import img from "../../assets/no_poster.png";
 import styles from "./CartItem.module.scss";
+import { Items } from "../../context";
 
-export const CartItem: React.FC = ({id, name, alternativeName, poster, year, rating }) => {
+
+export const CartItem: React.FC<Items> = ({
+	id,
+	name,
+	alternativeName,
+	poster,
+	year,
+	rating,
+}) => {
 	return (
 		<div className={styles.cartItem}>
 			<div className={styles.img}>

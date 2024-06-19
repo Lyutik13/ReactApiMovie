@@ -8,28 +8,28 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import OneCart from "./pages/OneCart";
+import { Items } from "./context";
 
 import "./sass/App.scss";
 
 function App() {
-	const [items, setItems] = React.useState([]);
-	const [isLoading, setIsLoading] = React.useState(true);
-
-	const [genres, setGenres] = React.useState("Все жанры");
-	const [ratingKp, setRatingKp] = React.useState("Все");
-	const [sortYears, setSortYears] = React.useState("Все года");
+	const [items, setItems] = React.useState<Items[] | null>(null);
+	const [isLoading, setIsLoading] = React.useState<boolean>(true);
+	const [genres, setGenres] = React.useState<string>("Все жанры");
+	const [ratingKp, setRatingKp] = React.useState<string>("Все");
+	const [sortYears, setSortYears] = React.useState<string>("Все года");
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
 		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
-    // ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS";
+		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
+		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
 			},
 		};
-    
+
 		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
@@ -49,6 +49,8 @@ function App() {
 
 		getUser();
 	}, [genres, ratingKp, sortYears]);
+
+	console.log(items);
 
 	return (
 		<AppContext.Provider

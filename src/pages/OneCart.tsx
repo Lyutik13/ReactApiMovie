@@ -2,19 +2,21 @@ import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { Items } from "../context";
+
 import img from "../assets/no_poster.png";
 import styles from "./OneCart.module.scss";
 
 export const OneCart: React.FC = () => {
-	let { id } = useParams();
+	const { id } = useParams<{id: string}>();
 	const navigate = useNavigate();
-	const [oneItem, setOneItem] = React.useState(null);
+	const [oneItem, setOneItem] = React.useState<Items>();
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
 		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
 		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS";
+		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
 		const params = {
 			headers: {
 				"X-API-KEY": token,

@@ -15,6 +15,7 @@ export const Header: React.FC = () => {
 					<h1>ReactApiMuvie</h1>
 				</Link>
 				<div className={styles.btn__wrapper}>
+          {/* В разроботке, поиск по имени */}
 					<div className={styles.search}>
 						<input placeholder="Фильмы, сериалы" type="text" />
 					</div>
