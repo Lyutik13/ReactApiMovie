@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# Кинопоиск React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛠 Технологии:
 
-Currently, two official plugins are available:
+- **ReactJS 18**
+- **TypeScript**           (типизация)
+- **Context**              (хранение данных)
+- **React Router v6**      (навигация)
+- **Axios + Fetch**        (отправка запроса на бэкенд)
+- **React Hooks**          (хуки)
+- **Prettier**             (форматирование кода)
+- **CSS-Modules / SCSS**   (стилизация)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### `npm i`
+### `npm start`
 
-## Expanding the ESLint configuration
+# 🛠 Что сделанно:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Отобразил список фильмов с API Кинопоиска.
+- Сделал фильтрацию (жанр, рейтинг, год)
+- Сделал переход на страницу с детальной информацией.
+- Создавал хранилище данных useContext.
+- Писал строго типизированный код на TypeScript.
 
-- Configure the top-level `parserOptions` property like this:
+# 🛠 P.S. 🛠:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- На этом не всё. Мне очень понравилось работать с апишкой код будет дорабатываться. Есть планы по улучшению и добавлению новых фичь. 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
