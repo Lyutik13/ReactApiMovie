@@ -29,6 +29,7 @@ export interface ContextType {
 	setRatingKp: (ratingKp: string) => void;
 	sortYears: string;
 	setSortYears: (sortYears: string) => void;
+	setSearch: (search: string) => void;
 }
 
 const defaultContext: ContextType = {
@@ -40,6 +41,7 @@ const defaultContext: ContextType = {
 	setRatingKp: () => {},
 	sortYears: "Все года",
 	setSortYears: () => {},
+	setSearch: () => {},
 };
 
 const AppContext = React.createContext<ContextType>(defaultContext);

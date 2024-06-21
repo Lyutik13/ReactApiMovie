@@ -18,6 +18,7 @@ function App() {
 	const [genres, setGenres] = React.useState<string>("Все жанры");
 	const [ratingKp, setRatingKp] = React.useState<string>("Все");
 	const [sortYears, setSortYears] = React.useState<string>("Все года");
+	const [search, setSearch] = React.useState<string>("");
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
@@ -33,7 +34,9 @@ function App() {
 		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
-		const url = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=50${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
+		const filterUrl = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=50${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
+		const searchUrl = ` https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=${search}`;
+		const url = search === "" ? filterUrl : searchUrl;
 
 		async function getUser() {
 			try {
@@ -48,9 +51,7 @@ function App() {
 		}
 
 		getUser();
-	}, [genres, ratingKp, sortYears]);
-
-	console.log(items);
+	}, [genres, ratingKp, sortYears, search]);
 
 	return (
 		<AppContext.Provider
@@ -63,6 +64,7 @@ function App() {
 				setRatingKp,
 				sortYears,
 				setSortYears,
+				setSearch,
 			}}>
 			<div className="wrapper">
 				<Header />

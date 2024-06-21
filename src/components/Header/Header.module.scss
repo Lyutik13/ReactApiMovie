@@ -2,9 +2,8 @@
 
 .header {
 	padding: 25px 0;
-  border-bottom: 1px solid $color1
+	border-bottom: 1px solid $color1;
 }
-
 
 .header__top {
 	display: flex;
@@ -14,7 +13,7 @@
 }
 
 .logo__wrapper {
-  cursor: pointer;
+	cursor: pointer;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -40,8 +39,9 @@
 
 .search {
 	margin-right: 45px;
+	position: relative;
 	input {
-		padding: 5px 12px;
+		padding: 5px 30px;
 		border: 1px solid rgba(0, 0, 0, 0.1);
 		border-radius: 8px;
 		font-size: 16px;
@@ -53,11 +53,31 @@
 	}
 }
 
+.searchImg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 8px;
+	width: 15px;
+	height: 15px;
+	opacity: 0.5;
+}
+
+.xImg {
+  cursor: pointer;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 5px 10px;
+	width: 15px;
+	height: 15px;
+	opacity: 0.5;
+  z-index: 10;
+}
+
 .categories__wrapper {
 	padding-top: 25px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	margin: 0 25px;
 }
 
@@ -68,8 +88,8 @@
 	font-size: 14px;
 	font-weight: 500;
 	li {
-    cursor: pointer;
-    transition: all 0.15s ease-out;
+		cursor: pointer;
+		transition: all 0.15s ease-out;
 		&:hover {
 			color: $color1;
 		}
