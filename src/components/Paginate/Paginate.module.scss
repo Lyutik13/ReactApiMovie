@@ -1,0 +1,44 @@
+@import "../../sass/variables";
+
+.paginate {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 25px 0;
+	gap: 5px;
+	li {
+    min-width: 32px;
+    height: 32px;
+		cursor: pointer;
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid $color5;
+		color: $color3;
+		transition: all 0.15s ease-out;
+		&:hover {
+			color: $color4;
+			background-color: $color1Hoverbasket;
+		}
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+	}
+}
+
+.focus {
+	color: $color4;
+	background-color: $color1Hoverbasket;
+}
+
+:global {
+	.selected {
+		background-color: $color1Hoverbasket;
+		a {
+			color: $color4;
+		}
+	}
+}

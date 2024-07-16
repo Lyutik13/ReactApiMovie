@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import OneCart from "./pages/OneCart";
+import Paginate from "./components/Paginate/Paginate";
 import { Items } from "./context";
 
 import "./sass/App.scss";
@@ -19,6 +20,8 @@ function App() {
 	const [ratingKp, setRatingKp] = React.useState<string>("Все");
 	const [sortYears, setSortYears] = React.useState<string>("Все года");
 	const [search, setSearch] = React.useState<string>("");
+	const [pagesCount, setPagesCount] = React.useState<number>(1);
+	const [selectPage, setSelectPage] = React.useState<number>(1);
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
@@ -31,27 +34,32 @@ function App() {
 			},
 		};
 
+		const api = `https://api.kinopoisk.dev/v1.4/movie`;
 		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
-		const filterUrl = `https://api.kinopoisk.dev/v1.4/movie?page=1&limit=50${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
-		const searchUrl = ` https://api.kinopoisk.dev/v1.4/movie/search?page=1&limit=10&query=${search}`;
+
+		const filterUrl = `${api}?page=${selectPage}&limit=15${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
+		const searchUrl = ` ${api}/search?page=${selectPage}&limit=15&query=${search}`;
 		const url = search === "" ? filterUrl : searchUrl;
 
 		async function getUser() {
+			setIsLoading(true);
+
 			try {
-				setIsLoading(true);
 				const { data } = await axios.get(url, params);
 				setItems(data.docs);
-				setIsLoading(false);
+				setPagesCount(data.pages);
 			} catch (error) {
 				console.error(error);
+				setItems(null);
+			} finally {
 				setIsLoading(false);
 			}
 		}
 
 		getUser();
-	}, [genres, ratingKp, sortYears, search]);
+	}, [genres, ratingKp, sortYears, search, selectPage]);
 
 	return (
 		<AppContext.Provider
@@ -65,6 +73,8 @@ function App() {
 				sortYears,
 				setSortYears,
 				setSearch,
+				pagesCount,
+				setSelectPage,
 			}}>
 			<div className="wrapper">
 				<Header />
@@ -75,6 +85,7 @@ function App() {
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 				</main>
+				<Paginate />
 				<Footer />
 			</div>
 		</AppContext.Provider>

@@ -30,6 +30,8 @@ export interface ContextType {
 	sortYears: string;
 	setSortYears: (sortYears: string) => void;
 	setSearch: (search: string) => void;
+	pagesCount: number;
+	setSelectPage: (selectPage: number) => void;
 }
 
 const defaultContext: ContextType = {
@@ -42,6 +44,8 @@ const defaultContext: ContextType = {
 	sortYears: "Все года",
 	setSortYears: () => {},
 	setSearch: () => {},
+	pagesCount: 1,
+	setSelectPage: () => {},
 };
 
 const AppContext = React.createContext<ContextType>(defaultContext);

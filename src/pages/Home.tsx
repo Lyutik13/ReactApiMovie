@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
             <Filters />
           </aside>
           <section className="cardsWrapper">
-            {!isLoading && items && items.length <= 0 ? (
+            {!isLoading && items && items.length === 0 ? (
               <NotFoundMuvie />
             ) : isLoading ? (
               "Loading muvies"
