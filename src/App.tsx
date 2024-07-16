@@ -27,7 +27,7 @@ function App() {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
 		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
 		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
+		const token = "GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
@@ -74,6 +74,7 @@ function App() {
 				setSortYears,
 				setSearch,
 				pagesCount,
+        selectPage,
 				setSelectPage,
 			}}>
 			<div className="wrapper">

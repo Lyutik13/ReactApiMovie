@@ -50,7 +50,7 @@ const listYears: string[] = [
 ];
 
 export const Filters: React.FC = () => {
-	const { genres, setGenres, ratingKp, setRatingKp, sortYears, setSortYears } =
+	const { genres, setGenres, ratingKp, setRatingKp, sortYears, setSortYears, setSelectPage } =
 		React.useContext(AppContext);
 	const [openGenres, setOpenGenres] = React.useState<boolean>(false);
 	const [openRatingKp, setOpenRatingKp] = React.useState<boolean>(false);
@@ -60,18 +60,21 @@ export const Filters: React.FC = () => {
 	const onClickGenres = (obj: ListType) => {
 		setGenres(obj.name);
 		setOpenGenres(false);
+		setSelectPage(1);
 	};
 
 	// переделать на imput
 	const onClickRatingKp = (obj: string) => {
 		setRatingKp(obj);
 		setOpenRatingKp(false);
+    setSelectPage(1);
 	};
 
 	// переделать на imput
 	const onClickSortYears = (obj: string) => {
 		setSortYears(obj);
 		setOpenSortYears(false);
+    setSelectPage(1);
 	};
 
 	return (
