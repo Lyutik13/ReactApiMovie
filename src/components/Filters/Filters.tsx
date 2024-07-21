@@ -79,7 +79,7 @@ export const Filters: React.FC = () => {
 
 	return (
 		<>
-			<details open>
+			<details>
 				<summary className={styles.summary}>Жанры</summary>
 				<div onClick={() => setOpenGenres(!openGenres)} className={styles.body}>
 					{genres}
@@ -99,7 +99,7 @@ export const Filters: React.FC = () => {
 				)}
 			</details>
 
-			<details open>
+			<details>
 				<summary className={styles.summary}>Рейтинг кинопоиска от 1 до 10</summary>
 				<div onClick={() => setOpenRatingKp(!openRatingKp)} className={styles.body}>
 					{ratingKp}
@@ -119,7 +119,7 @@ export const Filters: React.FC = () => {
 				)}
 			</details>
 
-			<details open>
+			<details>
 				<summary className={styles.summary}>Год выпуска</summary>
 				<div onClick={() => setOpenSortYears(!openSortYears)} className={styles.body}>
 					{sortYears}
