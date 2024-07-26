@@ -7,19 +7,21 @@ import logoImg from "../../assets/logo.png";
 import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
-	const { setSearch } = React.useContext(AppContext);
+	const { setSearch, setSelectPage } = React.useContext(AppContext);
 	const [valueInput, setValueInput] = React.useState("");
 
 	const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValueInput(event.target.value);
 		setTimeout(() => {
 			setSearch(event.target.value);
-		}, 2000);
+      setSelectPage(1);
+		}, 2500);
 	};
 
 	const clearImput = () => {
 		setValueInput("");
 		setSearch("");
+		setSelectPage(1);
 	};
 
 	return (
