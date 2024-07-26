@@ -8,7 +8,7 @@ import img from "../assets/no_poster.png";
 import styles from "./OneCart.module.scss";
 
 export const OneCart: React.FC = () => {
-	const { id } = useParams<{id: string}>();
+	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
 	const [oneItem, setOneItem] = React.useState<Items>();
 
@@ -40,13 +40,13 @@ export const OneCart: React.FC = () => {
 
 	if (!oneItem) {
 		return (
-			<div style={{ textAlign: "center" }} className="container">
-				loading...
+			<div className="loaderWrapper">
+				<span className="loader"></span>
 			</div>
 		);
 	}
 
-  const genresString = oneItem.genres?.map(genre => genre.name).join(", ");
+	const genresString = oneItem.genres?.map((genre) => genre.name).join(", ");
 
 	return (
 		<section className={styles.aboutMuvie}>
