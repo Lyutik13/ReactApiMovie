@@ -4,9 +4,10 @@ import AppContext from "../context";
 import CartItem from "../components/CartItem/CartItem";
 import Filters from "../components/Filters/Filters";
 import NotFoundMuvie from "../components/NotFoundBlock/NotFoundMuvie";
+import NotFoundBlock from "../components/NotFoundBlock/NotFoundBlock";
 
 export const Home: React.FC = () => {
-	const { items, isLoading } = React.useContext(AppContext);
+	const { items, isLoading, isError } = React.useContext(AppContext);
 
 	return (
 		<>
@@ -17,6 +18,7 @@ export const Home: React.FC = () => {
 						<Filters />
 					</aside>
 					<section className="cardsWrapper">
+            {isError && <NotFoundBlock/>}
 						{!isLoading && items && items.length === 0 ? (
 							<NotFoundMuvie />
 						) : isLoading ? (

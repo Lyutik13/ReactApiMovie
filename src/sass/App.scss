@@ -29,24 +29,24 @@ body {
 
 h1 {
 	color: #181818;
-	font-size: calc(18px + 8 *(100vw / 1400));
+	font-size: calc(18px + 8 * (100vw / 1400));
 	font-weight: 800;
 }
 
 h2 {
 	font-weight: 600;
 	font-size: 36px;
-  font-size: calc(20px + 16 *(100vw / 1400));
+	font-size: calc(20px + 16 * (100vw / 1400));
 	text-align: start;
 	margin: 32px 0px;
 }
 
 h3 {
-  font-size: calc(12px + 6 *(100vw / 1400));
-  margin: 0;
-  margin-bottom: 5px;
-  font-weight: 500;
-  line-height: 22px;
+	font-size: calc(12px + 6 * (100vw / 1400));
+	margin: 0;
+	margin-bottom: 5px;
+	font-weight: 500;
+	line-height: 22px;
 }
 
 .contentWrapper {
@@ -63,8 +63,10 @@ h3 {
 .cardsWrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: start;
 	flex: 1;
+	min-height: 60vh;
 }
 
 .footer {

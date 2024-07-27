@@ -16,6 +16,7 @@ import "./sass/App.scss";
 function App() {
 	const [items, setItems] = React.useState<Items[] | null>(null);
 	const [isLoading, setIsLoading] = React.useState<boolean>(true);
+	const [isError, setIsError] = React.useState<boolean>(false);
 	const [genres, setGenres] = React.useState<string>("Все жанры");
 	const [ratingKp, setRatingKp] = React.useState<string>("Все");
 	const [sortYears, setSortYears] = React.useState<string>("Все года");
@@ -45,6 +46,7 @@ function App() {
 
 		async function getUser() {
 			setIsLoading(true);
+			setIsError(false);
 
 			try {
 				const { data } = await axios.get(url, params);
@@ -53,6 +55,7 @@ function App() {
 			} catch (error) {
 				console.error(error);
 				setItems(null);
+				setIsError(true);
 			} finally {
 				setIsLoading(false);
 			}
@@ -74,8 +77,9 @@ function App() {
 				setSortYears,
 				setSearch,
 				pagesCount,
-        selectPage,
+				selectPage,
 				setSelectPage,
+        isError
 			}}>
 			<div className="wrapper">
 				<Header />
@@ -85,8 +89,8 @@ function App() {
 						<Route path="/movie/:id" element={<OneCart />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
+					<Paginate />
 				</main>
-				<Paginate />
 				<Footer />
 			</div>
 		</AppContext.Provider>
