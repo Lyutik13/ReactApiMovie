@@ -18,6 +18,7 @@ export interface Items {
 	genres: {
 		name: string;
 	}[];
+	isFavorites: boolean;
 }
 
 export interface ContextType {
@@ -34,6 +35,8 @@ export interface ContextType {
 	selectPage: number;
 	setSelectPage: (selectPage: number) => void;
 	isError: boolean;
+	favoritArr: Items[];
+	onAddFavorites: (props: Items) => void;
 }
 
 const defaultContext: ContextType = {
@@ -50,6 +53,8 @@ const defaultContext: ContextType = {
 	selectPage: 1,
 	setSelectPage: () => {},
 	isError: false,
+	favoritArr: [],
+	onAddFavorites: () => {},
 };
 
 const AppContext = React.createContext<ContextType>(defaultContext);

@@ -27,9 +27,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+  margin-bottom: 16px;
   h2 {
     margin: 0;
-    margin-bottom: 16px;
   }
 }
 
@@ -80,4 +80,8 @@
 	font-size: 13px;
 	line-height: 18px;
   color: $color1Hover;
+}
+
+@media (max-width: 575.98px) {
+
 }

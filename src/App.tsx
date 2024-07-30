@@ -7,6 +7,7 @@ import Header from "./components/Header/Heder";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Favorites from "./pages/Favorites";
 import OneCart from "./pages/OneCart";
 import Paginate from "./components/Paginate/Paginate";
 import { Items } from "./context";
@@ -23,6 +24,7 @@ function App() {
 	const [search, setSearch] = React.useState<string>("");
 	const [pagesCount, setPagesCount] = React.useState<number>(1);
 	const [selectPage, setSelectPage] = React.useState<number>(1);
+	const [favoritArr, setFavoritArr] = React.useState<Items[]>([]);
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
@@ -64,6 +66,23 @@ function App() {
 		getUser();
 	}, [genres, ratingKp, sortYears, search, selectPage]);
 
+  // сделать сейв в localstorage
+  // Поработать над отображением isLike в items State
+	const onAddFavorites = (item: Items) => {
+		try {
+			if (favoritArr.find((findObj) => findObj.id === item.id)) {
+				setFavoritArr((prev) => prev.filter((filterObj) => filterObj.id !== item.id));
+			} else {
+				setFavoritArr((prev) => [...prev, item]);
+			}
+		} catch (error) {
+			alert("Не удалось добавить в фавориты");
+			console.error(error);
+		}
+	};
+
+	console.log(favoritArr);
+
 	return (
 		<AppContext.Provider
 			value={{
@@ -79,7 +98,9 @@ function App() {
 				pagesCount,
 				selectPage,
 				setSelectPage,
-        isError
+				isError,
+				onAddFavorites,
+				favoritArr,
 			}}>
 			<div className="wrapper">
 				<Header />
@@ -87,6 +108,8 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/movie/:id" element={<OneCart />} />
+						<Route path="/favorites" element={<Favorites />} />
+						<Route path="/favorites/movie/:id" element={<OneCart />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
 					<Paginate />

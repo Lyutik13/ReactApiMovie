@@ -43,6 +43,11 @@
 		}
 	}
 
+  &-activeBasket {
+    color: #fff;
+    background-color: $color1Hoverbasket;
+  }
+
 	&-drawer {
 		width: 100%;
 		margin-top: 16px;

@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
 		setValueInput(event.target.value);
 		setTimeout(() => {
 			setSearch(event.target.value);
-      setSelectPage(1);
+			setSelectPage(1);
 		}, 2500);
 	};
 
@@ -55,7 +55,9 @@ export const Header: React.FC = () => {
 						)}
 					</div>
 					<div className="basket">
-						<button className="btn btn-basket">Избранное</button>
+						<Link to={`favorites`} className="btn btn-basket">
+							Избранное
+						</Link>
 					</div>
 				</div>
 			</div>
