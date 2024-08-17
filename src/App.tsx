@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Favorites from "./pages/Favorites";
 import OneCart from "./pages/OneCart";
-import Paginate from "./components/Paginate/Paginate";
 import { Items } from "./context";
 
 import "./sass/App.scss";
@@ -81,8 +80,6 @@ function App() {
 		}
 	};
 
-	console.log(favoritArr);
-
 	return (
 		<AppContext.Provider
 			value={{
@@ -112,7 +109,6 @@ function App() {
 						<Route path="/favorites/movie/:id" element={<OneCart />} />
 						<Route path="*" element={<NotFound />} />
 					</Routes>
-					<Paginate />
 				</main>
 				<Footer />
 			</div>

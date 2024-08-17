@@ -5,6 +5,7 @@ import CartItem from "../components/CartItem/CartItem";
 import Filters from "../components/Filters/Filters";
 import NotFoundMuvie from "../components/NotFoundBlock/NotFoundMuvie";
 import NotFoundBlock from "../components/NotFoundBlock/NotFoundBlock";
+import Paginate from "../components/Paginate/Paginate";
 
 export const Home: React.FC = () => {
 	const { items, isLoading, isError } = React.useContext(AppContext);
@@ -18,7 +19,7 @@ export const Home: React.FC = () => {
 						<Filters />
 					</aside>
 					<section className="cardsWrapper">
-            {isError && <NotFoundBlock/>}
+						{isError && <NotFoundBlock />}
 						{!isLoading && items && items.length === 0 ? (
 							<NotFoundMuvie />
 						) : isLoading ? (
@@ -31,6 +32,7 @@ export const Home: React.FC = () => {
 					</section>
 				</div>
 			</section>
+      {!isLoading && <Paginate/>}
 		</>
 	);
 };

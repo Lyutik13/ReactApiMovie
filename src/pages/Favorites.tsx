@@ -7,8 +7,6 @@ import CartItem from "../components/CartItem/CartItem";
 export const Favorites: React.FC = () => {
 	const { favoritArr } = React.useContext(AppContext);
 
-	console.log(favoritArr);
-
 	return (
 		<section className="favorites">
 			{favoritArr && favoritArr.length >= 1 ? (
