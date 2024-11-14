@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { Items } from "../context";
+const token = import.meta.env.VITE_TOKEN;
+const api = import.meta.env.VITE_API_URL;
 
 import img from "../assets/no_poster.png";
 import styles from "./OneCart.module.scss";
@@ -13,21 +15,15 @@ export const OneCart: React.FC = () => {
 	const [oneItem, setOneItem] = React.useState<Items>();
 
 	React.useEffect(() => {
-		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
-		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
-		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
 			},
 		};
 
-		const url = `https://api.kinopoisk.dev/v1.4/movie/${id}`;
-
 		async function getOneUser() {
 			try {
-				const { data } = await axios.get(url, params);
+				const { data } = await axios.get(`${api}/${id}`, params);
 				setOneItem(data);
 			} catch (error) {
 				console.error(error);
