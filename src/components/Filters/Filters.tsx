@@ -24,7 +24,7 @@ const listGenres: ListType[] = [
 	{ name: "Фантастика" },
 ];
 
-// Продумать ползунок вместо цыфр (чуть позже)
+// Продумать ползунок вместо цифр (чуть позже)
 const listRatingKp: string[] = [
 	"Все",
 	"1-2",
@@ -56,21 +56,21 @@ export const Filters: React.FC = () => {
 	const [openRatingKp, setOpenRatingKp] = React.useState<boolean>(false);
 	const [openSortYears, setOpenSortYears] = React.useState<boolean>(false);
 
-	// 2 раза нажимается genres fix leter
+	// 2 раза нажимается genres fix later
 	const onClickGenres = (obj: ListType) => {
 		setGenres(obj.name);
 		setOpenGenres(false);
 		setSelectPage(1);
 	};
 
-	// переделать на imput
+	// переделать на input
 	const onClickRatingKp = (obj: string) => {
 		setRatingKp(obj);
 		setOpenRatingKp(false);
     setSelectPage(1);
 	};
 
-	// переделать на imput
+	// переделать на input
 	const onClickSortYears = (obj: string) => {
 		setSortYears(obj);
 		setOpenSortYears(false);

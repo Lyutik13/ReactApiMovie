@@ -3,7 +3,7 @@ import React from "react";
 export const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
-			<p className="autor">
+			<p className="author">
 				Автор: <span>Лютиков В.И.</span>
 			</p>
 			<a

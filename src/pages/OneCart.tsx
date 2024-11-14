@@ -49,7 +49,7 @@ export const OneCart: React.FC = () => {
 	const genresString = oneItem.genres?.map((genre) => genre.name).join(", ");
 
 	return (
-		<section className={styles.aboutMuvie}>
+		<section className={styles.aboutMovie}>
 			<aside>
 				<div className={styles.img}>
 					<img src={oneItem.poster?.previewUrl || oneItem.poster?.url || img} alt="poster" />

@@ -35,7 +35,7 @@ export interface ContextType {
 	selectPage: number;
 	setSelectPage: (selectPage: number) => void;
 	isError: boolean;
-	favoritArr: Items[];
+	favoriteArr: Items[];
 	onAddFavorites: (props: Items) => void;
 }
 
@@ -53,7 +53,7 @@ const defaultContext: ContextType = {
 	selectPage: 1,
 	setSelectPage: () => {},
 	isError: false,
-	favoritArr: [],
+	favoriteArr: [],
 	onAddFavorites: () => {},
 };
 

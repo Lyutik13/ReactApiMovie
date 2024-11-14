@@ -8,7 +8,7 @@ const NotFoundBlock: React.FC = () => {
 			<div className={style.error}>
 				<h1>
 					<span>😕</span> <br />
-					Ничего не найденно
+					Ничего не найдено
 				</h1>
 				<p className={style.desc}>Попробуйте изменить фильтры поиска</p>
 			</div>

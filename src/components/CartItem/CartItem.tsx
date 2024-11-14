@@ -26,7 +26,7 @@ export const CartItem: React.FC<Items> = (props) => {
 					<p>{year}</p>
 				</Link>
 				<div className={styles.right}>
-					<p className="raiting">{rating.kp || rating.imdb || rating.filmCritics}</p>
+					<p className="rating">{rating.kp || rating.imdb || rating.filmCritics}</p>
 					<button
 						onClick={() => onClickFavorites()}
 						className={isLike ? "btn btn-log btn-activeBasket" : "btn btn-log"}>

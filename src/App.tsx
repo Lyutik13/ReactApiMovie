@@ -23,13 +23,13 @@ function App() {
 	const [search, setSearch] = React.useState<string>("");
 	const [pagesCount, setPagesCount] = React.useState<number>(1);
 	const [selectPage, setSelectPage] = React.useState<number>(1);
-	const [favoritArr, setFavoritArr] = React.useState<Items[]>([]);
+	const [favoriteArr, setFavoriteArr] = React.useState<Items[]>([]);
 
 	React.useEffect(() => {
 		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
 		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
 		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z";
+		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
@@ -65,14 +65,14 @@ function App() {
 		getUser();
 	}, [genres, ratingKp, sortYears, search, selectPage]);
 
-  // сделать сейв в localstorage
-  // Поработать над отображением isLike в items State
+	// сделать сейв в local storage
+	// Поработать над отображением isLike в items State
 	const onAddFavorites = (item: Items) => {
 		try {
-			if (favoritArr.find((findObj) => findObj.id === item.id)) {
-				setFavoritArr((prev) => prev.filter((filterObj) => filterObj.id !== item.id));
+			if (favoriteArr.find((findObj) => findObj.id === item.id)) {
+				setFavoriteArr((prev) => prev.filter((filterObj) => filterObj.id !== item.id));
 			} else {
-				setFavoritArr((prev) => [...prev, item]);
+				setFavoriteArr((prev) => [...prev, item]);
 			}
 		} catch (error) {
 			alert("Не удалось добавить в фавориты");
@@ -97,7 +97,7 @@ function App() {
 				setSelectPage,
 				isError,
 				onAddFavorites,
-				favoritArr,
+				favoriteArr,
 			}}>
 			<div className="wrapper">
 				<Header />

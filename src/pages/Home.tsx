@@ -3,7 +3,7 @@ import AppContext from "../context";
 
 import CartItem from "../components/CartItem/CartItem";
 import Filters from "../components/Filters/Filters";
-import NotFoundMuvie from "../components/NotFoundBlock/NotFoundMuvie";
+import NotFoundMovie from "../components/NotFoundBlock/NotFoundMovie";
 import NotFoundBlock from "../components/NotFoundBlock/NotFoundBlock";
 import Paginate from "../components/Paginate/Paginate";
 
@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
 
 	return (
 		<>
-			<section className="muvie">
+			<section className="movie">
 				<h2>Фильмы</h2>
 				<div className="contentWrapper">
 					<aside className="filterWrapper">
@@ -21,7 +21,7 @@ export const Home: React.FC = () => {
 					<section className="cardsWrapper">
 						{isError && <NotFoundBlock />}
 						{!isLoading && items && items.length === 0 ? (
-							<NotFoundMuvie />
+							<NotFoundMovie />
 						) : isLoading ? (
 							<div className="loaderWrapper">
 								<span className="loader"></span>
@@ -32,7 +32,7 @@ export const Home: React.FC = () => {
 					</section>
 				</div>
 			</section>
-      {!isLoading && <Paginate/>}
+			{!isLoading && items && items.length > 10 && <Paginate />}
 		</>
 	);
 };

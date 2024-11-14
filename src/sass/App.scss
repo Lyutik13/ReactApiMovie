@@ -25,6 +25,7 @@ body {
 
 .main {
 	margin: 0 25px;
+	min-height: calc(100vh - 253px);
 }
 
 h1 {
@@ -80,7 +81,7 @@ h3 {
 	border-radius: 0 0 10px 10px;
 }
 
-.autor {
+.author {
 	font-size: 14px;
 	line-height: 20px;
 	font-weight: 400;
@@ -106,13 +107,13 @@ h3 {
 }
 
 .favorites {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
 	text-align: center;
 	margin: 20px auto;
-  min-height: 50vh
+	min-height: 50vh;
 }
 
 @import "media";
