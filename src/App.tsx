@@ -10,6 +10,8 @@ import NotFound from "./pages/NotFound";
 import Favorites from "./pages/Favorites";
 import OneCart from "./pages/OneCart";
 import { Items } from "./context";
+const token = import.meta.env.VITE_TOKEN;
+const api = import.meta.env.VITE_API_URL;
 
 import "./sass/App.scss";
 
@@ -26,17 +28,12 @@ function App() {
 	const [favoriteArr, setFavoriteArr] = React.useState<Items[]>([]);
 
 	React.useEffect(() => {
-		// FR8DKRE-DPYM201-NSDV64X-NV3E4E3
-		// GDFZWMJ-0EC4PYG-HHK3KZG-DW06D9Z
-		// ZSKZ605-M3J4E74-NXTJ7D3-MAW60MS
-		const token = "FR8DKRE-DPYM201-NSDV64X-NV3E4E3";
 		const params = {
 			headers: {
 				"X-API-KEY": token,
 			},
 		};
 
-		const api = `https://api.kinopoisk.dev/v1.4/movie`;
 		const genresUrl = genres === "Все жанры" ? "" : `&genres.name=${genres.toLowerCase()}`;
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
