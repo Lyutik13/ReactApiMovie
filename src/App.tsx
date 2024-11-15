@@ -10,22 +10,30 @@ import NotFound from "./pages/NotFound";
 import Favorites from "./pages/Favorites";
 import OneCart from "./pages/OneCart";
 import { Items } from "./context";
+
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { setPagesCount } from "./redux/paginate/slice";
+
 const token = import.meta.env.VITE_TOKEN;
 const api = import.meta.env.VITE_API_URL;
 
 import "./sass/App.scss";
 
 function App() {
+	const dispatch = useAppDispatch();
 	const [items, setItems] = React.useState<Items[] | null>(null);
 	const [isLoading, setIsLoading] = React.useState<boolean>(true);
 	const [isError, setIsError] = React.useState<boolean>(false);
+
 	const [genres, setGenres] = React.useState<string>("Все жанры");
 	const [ratingKp, setRatingKp] = React.useState<string>("Все");
 	const [sortYears, setSortYears] = React.useState<string>("Все года");
 	const [search, setSearch] = React.useState<string>("");
-	const [pagesCount, setPagesCount] = React.useState<number>(1);
-	const [selectPage, setSelectPage] = React.useState<number>(1);
+
+	const selectPage = useAppSelector((state) => state.paginate.selectPage);
+
 	const [favoriteArr, setFavoriteArr] = React.useState<Items[]>([]);
+  const prevPagesCountRef = React.useRef<number | null>(null);
 
 	React.useEffect(() => {
 		const params = {
@@ -38,18 +46,21 @@ function App() {
 		const ratingKpUrl = ratingKp === "Все" ? "" : `&rating.kp=${ratingKp}`;
 		const sortYearsUrl = sortYears === "Все года" ? "" : `&year=${sortYears}`;
 
-		const filterUrl = `${api}?page=${selectPage}&limit=15${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
-		const searchUrl = ` ${api}/search?page=${selectPage}&limit=15&query=${search}`;
+		const filterUrl = `${api}?page=${selectPage}&limit=10${genresUrl}${ratingKpUrl}${sortYearsUrl}`;
+		const searchUrl = ` ${api}/search?page=${selectPage}&limit=10&query=${search}`;
 		const url = search === "" ? filterUrl : searchUrl;
 
 		async function getUser() {
 			setIsLoading(true);
 			setIsError(false);
-
 			try {
 				const { data } = await axios.get(url, params);
 				setItems(data.docs);
-				setPagesCount(data.pages);
+        
+				if (prevPagesCountRef.current !== data.pages) {
+          dispatch(setPagesCount(data.pages));
+          prevPagesCountRef.current = data.pages; 
+        }
 			} catch (error) {
 				console.error(error);
 				setItems(null);
@@ -89,9 +100,6 @@ function App() {
 				sortYears,
 				setSortYears,
 				setSearch,
-				pagesCount,
-				selectPage,
-				setSelectPage,
 				isError,
 				onAddFavorites,
 				favoriteArr,

@@ -32,7 +32,7 @@ export const Home: React.FC = () => {
 					</section>
 				</div>
 			</section>
-			{!isLoading && items && items.length > 10 && <Paginate />}
+			{!isLoading && items && items.length >= 10 && <Paginate />}
 		</>
 	);
 };

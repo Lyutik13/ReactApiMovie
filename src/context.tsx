@@ -31,9 +31,6 @@ export interface ContextType {
 	sortYears: string;
 	setSortYears: (sortYears: string) => void;
 	setSearch: (search: string) => void;
-	pagesCount: number;
-	selectPage: number;
-	setSelectPage: (selectPage: number) => void;
 	isError: boolean;
 	favoriteArr: Items[];
 	onAddFavorites: (props: Items) => void;
@@ -49,9 +46,6 @@ const defaultContext: ContextType = {
 	sortYears: "Все года",
 	setSortYears: () => {},
 	setSearch: () => {},
-	pagesCount: 1,
-	selectPage: 1,
-	setSelectPage: () => {},
 	isError: false,
 	favoriteArr: [],
 	onAddFavorites: () => {},

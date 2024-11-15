@@ -1,19 +1,18 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
 
-import AppContext from "../../context";
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { setSelectPage } from "../../redux/paginate/slice";
 
 import style from "./Paginate.module.scss";
 
-interface PaginateEvent {
-  selected: number;
-}
-
 export const Paginate: React.FC = () => {
-	const { pagesCount, selectPage, setSelectPage } = React.useContext(AppContext);
+	const dispatch = useAppDispatch();
+	const selectPage = useAppSelector((state) => state.paginate.selectPage);
+	const pagesCount = useAppSelector((state) => state.paginate.pagesCount);
 
-	const changePage = (event: PaginateEvent) => {
-		setSelectPage(event.selected + 1);
+	const changePage = (event: { selected: number }) => {
+		dispatch(setSelectPage(event.selected + 1));
 		window.scroll(0, 0);
 	};
 

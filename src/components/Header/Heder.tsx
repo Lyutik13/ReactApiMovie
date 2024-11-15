@@ -2,12 +2,15 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import AppContext from "../../context";
+import { useAppDispatch } from "../../hooks";
+import { setSelectPage } from "../../redux/paginate/slice";
 
 import logoImg from "../../assets/logo.png";
 import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
-	const { setSearch, setSelectPage } = React.useContext(AppContext);
+	const dispatch = useAppDispatch();
+	const { setSearch } = React.useContext(AppContext);
 	const [valueInput, setValueInput] = React.useState("");
 	const location = useLocation();
 
@@ -15,14 +18,14 @@ export const Header: React.FC = () => {
 		setValueInput(event.target.value);
 		setTimeout(() => {
 			setSearch(event.target.value);
-			setSelectPage(1);
+			dispatch(setSelectPage(1));
 		}, 2500);
 	};
 
 	const clearInput = () => {
 		setValueInput("");
 		setSearch("");
-		setSelectPage(1);
+		dispatch(setSelectPage(1));
 	};
 
 	return (
